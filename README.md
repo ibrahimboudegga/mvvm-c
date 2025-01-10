@@ -33,44 +33,18 @@ MVVM-C is a custom architectural pattern that extends the traditional **MVVM (Mo
 
 ## Example Workflow
 
-1. **Parent Screen (MainView)**:  
-   A `MainView` contains multiple subcomponents, such as `UserDetailsView` and `SettingsView`.  
+1. **Demo Screen (DemoScreen)**:  
+   A `DemoScreen` contains multiple subcomponents, such as `TokenView` and `ProductView` and `AddressSuggesstionsView`.  
 
-2. **Coordinator (MainCoordinator)**:  
-   The `MainCoordinator` manages the entire screen. It listens for events from `UserDetailsViewModel` or `SettingsViewModel` and orchestrates navigation or other actions.
+2. **Coordinator (DemoCoordinator)**:  
+   The `DemoCoordinator` manages the entire screen. It listens for events from `TokenView` or `ProductView` and orchestrates navigation or other actions.
 
 3. **Sub-Views**:
-   - **UserDetailsView**: Displays user information.
-   - **UserDetailsViewModel**: Handles user-related logic, fetching data from the `UserModel`.
-   - **SettingsView**: Displays app settings.
-   - **SettingsViewModel**: Manages the logic for user preferences.
+   - **TokenView**: Consumes a Dummy JSON API that generates a random useless token.
+   - **ProductView**: Consumes a Dummy JSON API that generates a random product.
+   - **AddressSuggesstionsView**: Displays address suggesstions via a french API.
 
 4. **Data Flow**:  
-   The Coordinator handles events like button taps from `UserDetailsView`, updates models if needed, and communicates changes back to the sub-views.
+   The Coordinator handles events like button taps from `ProductView`, updates models if needed, and communicates changes back to the sub-views.
 
----
-
-## Code Example
-
-```dart
-// Example of a simplified MainCoordinator in Flutter
-class MainCoordinator {
-  final UserDetailsViewModel userDetailsViewModel;
-  final SettingsViewModel settingsViewModel;
-
-  MainCoordinator({
-    required this.userDetailsViewModel,
-    required this.settingsViewModel,
-  });
-
-  void start() {
-    // Initialize the screen
-    userDetailsViewModel.loadUserDetails();
-    settingsViewModel.loadSettings();
-  }
-
-  void handleUserDetailsAction() {
-    // Respond to an action triggered from UserDetailsView
-    userDetailsViewModel.updateUserData();
-  }
-}
+This architectural pattern was designed by my primary instructor, **Jewel CHERIAA**, a seasoned **Senior Mobile Application Developer** and **Software Architect** specializing in crafting robust architectural patterns for mobile frameworks, including **iOS**, **Android**, and **Flutter**. His expertise focuses on creating scalable, maintainable, and efficient solutions that enhance development practices and streamline application architecture.
